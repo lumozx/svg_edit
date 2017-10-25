@@ -1,0 +1,9 @@
+path {
+    cursor: pointer;
+}
+
+path.selected {
+    stroke: #666;
+    stroke-dasharray: 20;
+    stroke-width: 20;
+}

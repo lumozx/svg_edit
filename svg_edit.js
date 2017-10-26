@@ -4,17 +4,19 @@ function svg_edit(id, t) {
     $(id).find('svg').children().on('click', function() {
         $(this).toggleClass('selected')
     })
-    $(id).append(`<button onclick="transform('top','${id}')">top</button>`)
-    $(id).append(`<button onclick="transform('bottom','${id}')">bottom</button>`)
-    $(id).append(`<button onclick="transform('left','${id}')">left</button>`)
-    $(id).append(`<button onclick="transform('right','${id}')">right</button>`)
-    $(id).append(`<button onclick="transform('l','${id}')">L</button>`)
-    $(id).append(`<button onclick="transform('r','${id}')">R</button>`);
-    $(id).append(`<button onclick="transform('d','${id}')">d</button>`);
-    $(id).append(`<button onclick="transform('u','${id}')">u</button>`);
-    if(t){
-        $(id).append(`<button onclick="selectColor('${id}','${t}')">changecolor</button>`);
+    var html = ``;
+    var html = html + `<button onclick="transform('top','${id}')">top</button>`;
+    var html = html + `<button onclick="transform('bottom','${id}')">bottom</button>`;
+    var html = html + `<button onclick="transform('left','${id}')">left</button>`;
+    var html = html + `<button onclick="transform('right','${id}')">right</button>`;
+    var html = html + `<button onclick="transform('l','${id}')">L</button>`;
+    var html = html + `<button onclick="transform('r','${id}')">R</button>`;
+    var html = html + `<button onclick="transform('d','${id}')">d</button>`;
+    var html = html + `<button onclick="transform('u','${id}')">u</button>`;
+    if (t) {
+        var html = html + `<button onclick="selectColor('${id}','${t}')">changecolor</button>`;
     }
+    $(id).append(html)
 }
 
 function transform(e, id) {

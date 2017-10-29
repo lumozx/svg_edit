@@ -53,10 +53,14 @@ function selectColor(id, t) {
 }
 
 function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
+    var n = $('.selected');
+    if (!le) {
+        var n = $(id).find('svg').children();
+        var le = n.length;
+    }
     for (var il = 0; il < le; il++) {
-        if ($('.selected:eq(' + il + ')').attr('transform')) {
-            // console.log(1)
-            var d = $('.selected:eq(' + il + ')').attr('transform');
+        if (n.eq(il).attr('transform')) {
+            var d = n.eq(il).attr('transform');
             if (d.indexOf(val) != -1) {
                 var fl = d.indexOf(val)
                 var zuo = d.indexOf("(", fl);
@@ -129,7 +133,7 @@ function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
                 default:
                     return;
             }
-            $('.selected:eq(' + il + ')').attr('transform', k)
+            n.eq(il).attr('transform', k)
         } else {
             switch (e) {
                 case "l":
@@ -159,119 +163,8 @@ function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
                 default:
                     return;
             }
-            $('.selected:eq(' + il + ')').attr('transform', cs)
+            n.eq(il).attr('transform', cs)
         }
     }
-    if (!le) {
-        var n = $(id).find('svg').children();
-        var le = n.length;
-        for (var il = 0; il < le; il++) {
-            if (n.eq(il).attr('transform')) {
-                var d = n.eq(il).attr('transform');
-                if (d.indexOf(val) != -1) {
-                    var fl = d.indexOf(val)
-                    var zuo = d.indexOf("(", fl);
-                    var you = d.indexOf(")", zuo);
-                    var f = d.substring(zuo + 1, you)
-                } else {
-                    var f = de
-                }
-                var g = f.split(',');
-                switch (e) {
-                    case "l":
-                        var h = parseInt($.trim(g[0])) + 30;
-                        var k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
-                        if (k == d) {
-                            k = d + "rotate(" + h + "," + c + " " + c + ")";
-                        }
-                        break;
-                    case "r":
-                        var h = parseInt($.trim(g[0])) - 30;
-                        var k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
-                        if (k == d) {
-                            k = d + "rotate(" + h + "," + c + " " + c + ")";
-                        }
-                        break;
-                    case "d":
-                        var h = (parseFloat($.trim(g[0])) - 0.1).toFixed(1);
-                        if (h < 0.1) {
-                            h = 0.1;
-                        }
-                        var k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
-                        if (k == d && h != 0.1) {
-                            k = d + "scale(" + h + "," + h + ")";
-                        }
-                        break;
-                    case "u":
-                        var h = (parseFloat($.trim(g[0])) + 0.1).toFixed(1);
-                        var k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
-                        if (k == d) {
-                            k = d + "scale(" + h + "," + h + ")";
-                        }
-                        break;
-                    case "top":
-                        var h = parseFloat($.trim(g[1])) - 10;
-                        var k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
-                        if (k == d) {
-                            k = d + "translate(" + parseFloat($.trim(g[0])) + "," + h + ")";
-                        }
-                        break;
-                    case "bottom":
-                        var h = parseFloat($.trim(g[1])) + 10;
-                        var k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
-                        if (k == d) {
-                            k = d + "translate(" + parseFloat($.trim(g[0])) + "," + h + ")";
-                        }
-                        break;
-                    case "left":
-                        var h = parseFloat($.trim(g[0])) - 10;
-                        var k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
-                        if (k == d) {
-                            k = d + "translate(" + h + "," + parseFloat($.trim(g[1])) + ")";
-                        }
-                        break;
-                    case "right":
-                        var h = parseFloat($.trim(g[0])) + 10;
-                        var k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
-                        if (k == d) {
-                            k = d + "translate(" + h + "," + parseFloat($.trim(g[1])) + ")";
-                        }
-                        break;
-                    default:
-                        return;
-                }
-                n.eq(il).attr('transform', k)
-            } else {
-                switch (e) {
-                    case "l":
-                        var cs = "rotate(30," + c + " " + c + ")";
-                        break;
-                    case "r":
-                        var cs = "rotate(-30," + c + " " + c + ")";
-                        break;
-                    case "d":
-                        var cs = "scale(0.9,0.9)";
-                        break;
-                    case "u":
-                        var cs = "scale(1.1,1.1)";
-                        break;
-                    case "top":
-                        var cs = "translate(0,-10)";
-                        break;
-                    case "bottom":
-                        var cs = "translate(0,10)";
-                        break;
-                    case "left":
-                        var cs = "translate(-10,0)";
-                        break;
-                    case "right":
-                        var cs = "translate(10,0)";
-                        break;
-                    default:
-                        return;
-                }
-                n.eq(il).attr('transform', cs)
-            }
-        }
-    }
+    
 };

@@ -31,13 +31,13 @@ function transform(e, id) {
             break;
         case "d":
         case "u":
-            lin(le, 'scale', "1", e, id, c);
+            lin(le, 'scale', "1", e, id);
             break;
         case "top":
         case "bottom":
         case "left":
         case "right":
-            lin(le, 'scale', "0,0", e, id, c);
+            lin(le, 'scale', "0,0", e, id);
             break;
         default:
             return;

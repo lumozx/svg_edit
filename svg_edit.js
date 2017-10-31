@@ -45,7 +45,7 @@ function transform(e, id) {
 };
 
 function selectColor(id, t) {
-    var c = $.trim($(t).text());
+    var t = $.trim(t);
     $('.selected').attr('fill', t);
     if ($('.selected').length == 0) {
         $(id).find('svg').children().attr('fill', t);

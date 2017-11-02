@@ -58,7 +58,7 @@ function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
         var n = $(id).find('svg').children();
         var le = n.length;
     }
-    for (var il = 0; il < le; il++) {
+    for (let il = 0; il < le; il++) {
         if (n.eq(il).attr('transform')) {
             var d = n.eq(il).attr('transform');
             if (d.indexOf(val) != -1) {

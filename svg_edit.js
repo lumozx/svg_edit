@@ -2,8 +2,9 @@
 
 function svg_edit(id, t) {
     $(id).find('svg').children().on('click', function() {
-        $(this).toggleClass('selected')
-    })
+        $(this).toggleClass('selected');
+    });
+
     var html = ``;
     var html = html + `<button onclick="transform('top','${id}')">top</button>`;
     var html = html + `<button onclick="transform('bottom','${id}')">bottom</button>`;

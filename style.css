@@ -1,8 +1,8 @@
-path {
+svg {
     cursor: pointer;
 }
 
-path.selected {
+.selected {
     stroke: #666;
     stroke-dasharray: 20;
     stroke-width: 20;

@@ -4,7 +4,6 @@ function svg_edit(id, t) {
     $(id).find('svg').children().on('click', function() {
         $(this).toggleClass('selected');
     });
-
     var html = ``;
     var html = html + `<button onclick="transform('top','${id}')">top</button>`;
     var html = html + `<button onclick="transform('bottom','${id}')">bottom</button>`;
@@ -47,10 +46,11 @@ function transform(e, id) {
 
 function selectColor(id, t) {
     var t = $.trim(t);
-    $('.selected').attr('fill', t);
     if ($('.selected').length == 0) {
         $(id).find('svg').children().attr('fill', t);
+        return;
     }
+    $('.selected').attr('fill', t);
 }
 
 function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
@@ -167,5 +167,4 @@ function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
             n.eq(il).attr('transform', cs)
         }
     }
-    
 };

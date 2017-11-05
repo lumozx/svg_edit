@@ -20,7 +20,7 @@ function svg_edit(id, t) {
 }
 
 function transform(e, id) {
-    var a = $('' + id + ' svg')[0].attributes['viewBox'].value;
+    var a = $(id + ' svg').attr('viewBox');
     var b = a.split(' ')
     var c = parseInt(b[3] / 2); //获得旋转中心
     var le = $('.selected').length;

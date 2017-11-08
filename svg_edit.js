@@ -37,7 +37,7 @@ function transform(e, id) {
         case "bottom":
         case "left":
         case "right":
-            lin(le, 'scale', "0,0", e, id);
+            lin(le, 'translate', "0,0", e, id);
             break;
         default:
             return;

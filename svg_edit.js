@@ -45,7 +45,7 @@ function transform(e, id) {
 
 function selectColor(id, t) {
     var t = $.trim(t);
-    if ($('.selected').length == 0) {
+    if ($('.selected').length === 0) {
         $(id).find('svg').children().attr('fill', t);
         return;
     }
@@ -61,7 +61,7 @@ function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
     for (let il = 0; il < le; il++) {
         if (n.eq(il).attr('transform')) {
             var d = n.eq(il).attr('transform');
-            if (d.indexOf(val) != -1) {
+            if (d.indexOf(val) !== -1) {
                 var fl = d.indexOf(val)
                 var zuo = d.indexOf("(", fl);
                 var you = d.indexOf(")", zuo);
@@ -74,14 +74,14 @@ function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
                 case "l":
                     var h = parseInt($.trim(g[0])) + 30;
                     var k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
-                    if (k == d) {
+                    if (k === d) {
                         k = d + "rotate(" + h + "," + c + " " + c + ")";
                     }
                     break;
                 case "r":
                     var h = parseInt($.trim(g[0])) - 30;
                     var k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
-                    if (k == d) {
+                    if (k === d) {
                         k = d + "rotate(" + h + "," + c + " " + c + ")";
                     }
                     break;
@@ -91,42 +91,42 @@ function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
                         h = 0.1;
                     }
                     var k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
-                    if (k == d && h != 0.1) {
+                    if (k === d && h !== 0.1) {
                         k = d + "scale(" + h + "," + h + ")";
                     }
                     break;
                 case "u":
                     var h = (parseFloat($.trim(g[0])) + 0.1).toFixed(1);
                     var k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
-                    if (k == d) {
+                    if (k === d) {
                         k = d + "scale(" + h + "," + h + ")";
                     }
                     break;
                 case "top":
                     var h = parseFloat($.trim(g[1])) - 10;
                     var k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
-                    if (k == d) {
+                    if (k === d) {
                         k = d + "translate(" + parseFloat($.trim(g[0])) + "," + h + ")";
                     }
                     break;
                 case "bottom":
                     var h = parseFloat($.trim(g[1])) + 10;
                     var k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
-                    if (k == d) {
+                    if (k === d) {
                         k = d + "translate(" + parseFloat($.trim(g[0])) + "," + h + ")";
                     }
                     break;
                 case "left":
                     var h = parseFloat($.trim(g[0])) - 10;
                     var k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
-                    if (k == d) {
+                    if (k === d) {
                         k = d + "translate(" + h + "," + parseFloat($.trim(g[1])) + ")";
                     }
                     break;
                 case "right":
                     var h = parseFloat($.trim(g[0])) + 10;
                     var k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
-                    if (k == d) {
+                    if (k === d) {
                         k = d + "translate(" + h + "," + parseFloat($.trim(g[1])) + ")";
                     }
                     break;

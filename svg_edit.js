@@ -26,17 +26,17 @@ function transform(e, id) {
     switch (e) {
         case "l":
         case "r":
-            lin(le, 'rotate', "0", e, id, c);
+            lin({lengths:le,action:'rotate',default:'0',direction:e,id:id,center:c});
             break;
         case "d":
         case "u":
-            lin(le, 'scale', "1", e, id);
+        lin({lengths:le,action:'scale',default:'1',direction:e,id:id});
             break;
         case "top":
         case "bottom":
         case "left":
         case "right":
-            lin(le, 'translate', "0,0", e, id);
+        lin({lengths:le,action:'translate',default:'0,0',direction:e,id:id});
             break;
         default:
             return;
@@ -52,7 +52,13 @@ function selectColor(id, t) {
     $('.selected').attr('fill', t);
 }
 
-function lin(le, val, de, e, id, c) { //'transform'   'rotate'   "0"    'l'
+function lin(args) { //le val de e id c
+    var le = args.lengths;
+    var val = args.action;
+    var de = args.default;
+    var e = args.direction;
+    var id = args.id;
+    var c = args.center;
     var n = $('.selected');
     if (!le) {
         var n = $(id).find('svg').children();

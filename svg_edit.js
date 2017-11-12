@@ -44,7 +44,7 @@ function transform(e, id) {
 };
 
 function selectColor(id, t) {
-    var t = $.trim(t);
+    t = $.trim(t);
     if ($('.selected').length === 0) {
         $(id).find('svg').children().attr('fill', t);
         return;
@@ -61,8 +61,8 @@ function lin(args) { //le val de e id c
     var c = args.center;
     var n = $('.selected');
     if (!le) {
-        var n = $(id).find('svg').children();
-        var le = n.length;
+    n = $(id).find('svg').children();
+    le = n.length;
     }
     for (let il = 0; il < le; il++) {
         if (n.eq(il).attr('transform')) {
@@ -73,7 +73,7 @@ function lin(args) { //le val de e id c
                 var you = d.indexOf(")", zuo);
                 var f = d.substring(zuo + 1, you)
             } else {
-                var f = de
+                f = de
             }
             var g = f.split(',');
             switch (e) {
@@ -85,53 +85,53 @@ function lin(args) { //le val de e id c
                     }
                     break;
                 case "r":
-                    var h = parseInt($.trim(g[0])) - 30;
-                    var k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
+                    h = parseInt($.trim(g[0])) - 30;
+                    k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
                     if (k === d) {
                         k = d + "rotate(" + h + "," + c + " " + c + ")";
                     }
                     break;
                 case "d":
-                    var h = (parseFloat($.trim(g[0])) - 0.1).toFixed(1);
+                    h = (parseFloat($.trim(g[0])) - 0.1).toFixed(1);
                     if (h < 0.1) {
                         h = 0.1;
                     }
-                    var k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
+                    k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
                     if (k === d && h !== 0.1) {
                         k = d + "scale(" + h + "," + h + ")";
                     }
                     break;
                 case "u":
-                    var h = (parseFloat($.trim(g[0])) + 0.1).toFixed(1);
-                    var k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
+                    h = (parseFloat($.trim(g[0])) + 0.1).toFixed(1);
+                    k = d.replace('scale(' + f + ')', "scale(" + h + "," + h + ")");
                     if (k === d) {
                         k = d + "scale(" + h + "," + h + ")";
                     }
                     break;
                 case "top":
-                    var h = parseFloat($.trim(g[1])) - 10;
-                    var k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
+                    h = parseFloat($.trim(g[1])) - 10;
+                    k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
                     if (k === d) {
                         k = d + "translate(" + parseFloat($.trim(g[0])) + "," + h + ")";
                     }
                     break;
                 case "bottom":
-                    var h = parseFloat($.trim(g[1])) + 10;
-                    var k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
+                    h = parseFloat($.trim(g[1])) + 10;
+                    k = d.replace('translate(' + f + ')', "translate(" + parseFloat($.trim(g[0])) + "," + h + ")");
                     if (k === d) {
                         k = d + "translate(" + parseFloat($.trim(g[0])) + "," + h + ")";
                     }
                     break;
                 case "left":
-                    var h = parseFloat($.trim(g[0])) - 10;
-                    var k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
+                    h = parseFloat($.trim(g[0])) - 10;
+                    k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
                     if (k === d) {
                         k = d + "translate(" + h + "," + parseFloat($.trim(g[1])) + ")";
                     }
                     break;
                 case "right":
-                    var h = parseFloat($.trim(g[0])) + 10;
-                    var k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
+                    h = parseFloat($.trim(g[0])) + 10;
+                    k = d.replace('translate(' + f + ')', "translate(" + h + "," + parseFloat($.trim(g[1])) + ")");
                     if (k === d) {
                         k = d + "translate(" + h + "," + parseFloat($.trim(g[1])) + ")";
                     }

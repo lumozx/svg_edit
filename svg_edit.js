@@ -26,17 +26,17 @@ function transform(e, id) {
     switch (e) {
         case "l":
         case "r":
-            lin({lengths:le,action:'rotate',default:'0',direction:e,id:id,center:c});
+            lin({lengths:le,action:'rotate',defaults:'0',direction:e,id:id,center:c});
             break;
         case "d":
         case "u":
-        lin({lengths:le,action:'scale',default:'1',direction:e,id:id});
+        lin({lengths:le,action:'scale',defaults:'1',direction:e,id:id});
             break;
         case "top":
         case "bottom":
         case "left":
         case "right":
-        lin({lengths:le,action:'translate',default:'0,0',direction:e,id:id});
+        lin({lengths:le,action:'translate',defaults:'0,0',direction:e,id:id});
             break;
         default:
             return;
@@ -52,43 +52,37 @@ function selectColor(id, t) {
     $('.selected').attr('fill', t);
 }
 
-function lin(args) { //le val de e id c
-    var le = args.lengths;
-    var val = args.action;
-    var de = args.default;
-    var e = args.direction;
-    var id = args.id;
-    var c = args.center;
+function lin({lengths,action,defaults,direction,id,center}) { //le val de e id c
     var n = $('.selected');
-    if (!le) {
+    if (!lengths) {
     n = $(id).find('svg').children();
-    le = n.length;
+    lengths = n.length;
     }
-    for (let il = 0; il < le; il++) {
+    for (let il = 0; il < lengths; il++) {
         if (n.eq(il).attr('transform')) {
             var d = n.eq(il).attr('transform');
-            if (d.indexOf(val) !== -1) {
-                var fl = d.indexOf(val)
+            if (d.indexOf(action) !== -1) {
+                var fl = d.indexOf(action)
                 var zuo = d.indexOf("(", fl);
                 var you = d.indexOf(")", zuo);
                 var f = d.substring(zuo + 1, you)
             } else {
-                f = de
+                f = defaults;
             }
             var g = f.split(',');
-            switch (e) {
+            switch (direction) {
                 case "l":
                     var h = parseInt($.trim(g[0])) + 30;
-                    var k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
+                    var k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + center + " " + center + ")");
                     if (k === d) {
-                        k = d + "rotate(" + h + "," + c + " " + c + ")";
+                        k = d + "rotate(" + h + "," + center + " " + center + ")";
                     }
                     break;
                 case "r":
                     h = parseInt($.trim(g[0])) - 30;
-                    k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + c + " " + c + ")");
+                    k = d.replace('rotate(' + f + ')', "rotate(" + h + "," + center + " " + center + ")");
                     if (k === d) {
-                        k = d + "rotate(" + h + "," + c + " " + c + ")";
+                        k = d + "rotate(" + h + "," + center + " " + center + ")";
                     }
                     break;
                 case "d":
@@ -141,12 +135,12 @@ function lin(args) { //le val de e id c
             }
             n.eq(il).attr('transform', k)
         } else {
-            switch (e) {
+            switch (direction) {
                 case "l":
-                    var cs = "rotate(30," + c + " " + c + ")";
+                    var cs = "rotate(30," + center + " " + center + ")";
                     break;
                 case "r":
-                    var cs = "rotate(-30," + c + " " + c + ")";
+                    var cs = "rotate(-30," + center + " " + center + ")";
                     break;
                 case "d":
                     var cs = "scale(0.9,0.9)";

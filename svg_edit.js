@@ -137,10 +137,10 @@ function lin({lengths,action,defaults,direction,id,center}) { //le val de e id c
         } else {
             switch (direction) {
                 case "l":
-                    var cs = "rotate(30," + center + " " + center + ")";
+                    var cs = `rotate(30,${center} ${center})`;
                     break;
                 case "r":
-                    var cs = "rotate(-30," + center + " " + center + ")";
+                    var cs = `rotate(-30,${center} ${center})`;
                     break;
                 case "d":
                     var cs = "scale(0.9,0.9)";
